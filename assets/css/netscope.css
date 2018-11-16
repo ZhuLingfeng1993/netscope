@@ -124,6 +124,9 @@ h1, h2, h3 {
 #net-error .msg {
 }
 
+
+/* node(layer) */
+
 .node-label {
     font-size: 14px;
     color: #563621;
@@ -141,7 +144,7 @@ h1, h2, h3 {
 }
 
 .node-type-convolution, .node-type-deconvolution {
-    fill: #CA5237;
+    fill: #bd0026;
 }
 
 .node-type-convolution .node-label, .node-type-deconvolution .node-label {
@@ -156,8 +159,24 @@ h1, h2, h3 {
     color: #FFF;
 }
 
+.edgeLabel { # data size: ch wxh (n)
+    font-size: 14px;
+}
+
+.node-type-implicit {
+    fill: #a5c261; 
+}
+
+.node-type-pooling {
+    fill: #ca99c2;  
+}
+
+.node-type-python {
+    fill: #CDDC39;  
+}
+
 .node-type-batchnorm {
-    fill: #84AC7E;  /* dirty light green */
+    fill: #69BFFF;  
 }
 
 .node-type-lrn {
