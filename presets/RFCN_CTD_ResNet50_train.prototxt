@@ -3980,7 +3980,7 @@ layer {
   }
 }
 layer {
-    name: "lstm2_h"
+    name: "rlstm2_h"
     type: "LSTM"
     bottom: "rlstm1_input"
     bottom: "rlstm1_cont_sentence_h"
@@ -4161,7 +4161,7 @@ layer {
   }
 }
 layer {
-    name: "lstm2_w"
+    name: "rlstm2_w"
     type: "LSTM"
     bottom: "rlstm1_input_w"
     bottom: "rlstm1_cont_sentence_w"
