@@ -3890,36 +3890,6 @@ layer {
     }
 }
 
-# -----------------enhance position sensitive------------------------
-layer {
-    bottom: "psroipooled_loc_rois_info_h"
-    top: "info_syn_pred_h_enhanced"
-    name: "enhanced_ave_bbox_pred_rois_info_curve_h"
-    type: "Pooling"
-    pooling_param {
-        pool: AVE
-        kernel_size: 7
-        stride: 7
-    }
-}
-
-layer{
-    name:"loss_info_h_enhanced"
-    type: "SmoothL1LossOHEM"  # we don't use ohem. 
-    bottom: "info_syn_pred_h_enhanced" 
-    bottom: "info_targets_fgh"  
-    bottom: "info_inside_weights_fgh"
-    top: "info_loss_h_enhanced"
-    loss_weight: 1
-    loss_param {
-         normalization: PRE_FIXED
-         pre_fixed_normalizer: 32 
-    }
-    propagate_down: true
-    propagate_down: false
-    propagate_down: false
-}
-
 ################lstm#######################
 # prepare lstm inputs
 layer {
@@ -4069,36 +4039,6 @@ layer {
         output_dim: 16 
         group_size: 7
     }
-}
-
-# -----------------enhance position sensitive-w------------------------
-layer {
-    bottom: "psroipooled_loc_rois_info_w"
-    top: "info_syn_pred_w_enhanced"
-    name: "enhanced_ave_bbox_pred_rois_info_curve_w"
-    type: "Pooling"
-    pooling_param {
-        pool: AVE
-        kernel_size: 7
-        stride: 7
-    }
-}
-
-layer{
-    name:"loss_info_w_enhanced"
-    type: "SmoothL1LossOHEM"  # we don't use ohem. 
-    bottom: "info_syn_pred_w_enhanced" 
-    bottom: "info_targets_fgw"  
-    bottom: "info_inside_weights_fgw"
-    top: "info_loss_w_enhanced"
-    loss_weight: 1
-    loss_param {
-         normalization: PRE_FIXED
-         pre_fixed_normalizer: 32 
-    }
-    propagate_down: true
-    propagate_down: false
-    propagate_down: false
 }
 
 ################lstm#######################

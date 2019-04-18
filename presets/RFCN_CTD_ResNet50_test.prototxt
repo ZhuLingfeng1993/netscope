@@ -3823,19 +3823,6 @@ layer {
     }
 }
 
-# -----------------enhance position sensitive------------------------
-layer {
-    bottom: "psroipooled_loc_rois_info_h"
-    top: "info_syn_pred_h_enhanced"
-    name: "enhanced_ave_bbox_pred_rois_info_curve_h"
-    type: "Pooling"
-    pooling_param {
-        pool: AVE
-        kernel_size: 7
-        stride: 7
-    }
-}
-
 ################lstm#######################
 # prepare lstm inputs
 layer {
@@ -3895,7 +3882,7 @@ layer {
   }
 }
 layer {
-    name: "rlstm2_h"
+    name: "lstm2_h"
     type: "LSTM"
     bottom: "rlstm1_input"
     bottom: "rlstm1_cont_sentence_h"
@@ -3984,19 +3971,6 @@ layer {
     }
 }
 
-# -----------------enhance position sensitive-w------------------------
-layer {
-    bottom: "psroipooled_loc_rois_info_w"
-    top: "info_syn_pred_w_enhanced"
-    name: "enhanced_ave_bbox_pred_rois_info_curve_w"
-    type: "Pooling"
-    pooling_param {
-        pool: AVE
-        kernel_size: 7
-        stride: 7
-    }
-}
-
 ################lstm#######################
 # prepare lstm inputs
 layer {
@@ -4056,7 +4030,7 @@ layer {
   }
 }
 layer {
-    name: "rlstm2_w"
+    name: "lstm2_w"
     type: "LSTM"
     bottom: "rlstm1_input_w"
     bottom: "rlstm1_cont_sentence_w"
@@ -4134,7 +4108,7 @@ layer {
 
 #--------------CURVE position sensitive RoI pooling--------------
 layer {
-   name: "cls_prob_pre"
+   name: "cls_prob"
    type: "Softmax"
    bottom: "cls_score"
    top: "cls_prob_pre"
@@ -4166,34 +4140,6 @@ layer {
     }
 }
 
-###############################  If visualizing ctd. Simply uncomment ctd+tloc 
-# layer {
-#     name: "info_pred_reshape_h"
-#     type: "Reshape"
-#     bottom: "info_syn_pred_h_enhanced"
-#     top: "info_pred_h"
-#     reshape_param {
-#         shape {
-#             dim: -1
-#             dim: 16
-#         }
-#     }
-# }
-
-# layer {
-#     name: "info_pred_reshape_w"
-#     type: "Reshape"
-#     bottom: "info_syn_pred_w_enhanced"
-#     top: "info_pred_w"
-#     reshape_param {
-#         shape {
-#             dim: -1
-#             dim: 16
-#         }
-#     }
-# }
-
-############################### If visualizing ctd + tloc. Simply uncomment ctd 
 layer {
     name: "info_pred_reshape_h"
     type: "Reshape"
