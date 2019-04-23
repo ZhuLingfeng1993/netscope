@@ -1627,9 +1627,6 @@ layer {
   bottom: "mbox_conf_flatten"
   bottom: "mbox_priorbox"
   top: "detection_out"
-  include {
-    phase: TEST
-  }
   detection_output_param {
     num_classes: 7
     share_location: true
@@ -1649,9 +1646,6 @@ layer {
   bottom: "detection_out"
   bottom: "label"
   top: "detection_eval"
-  include {
-    phase: TEST
-  }
   detection_evaluate_param {
     num_classes: 7
     background_label_id: 0

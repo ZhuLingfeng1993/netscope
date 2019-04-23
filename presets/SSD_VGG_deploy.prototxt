@@ -1603,9 +1603,6 @@ layer {
   bottom: "mbox_conf_flatten"
   bottom: "mbox_priorbox"
   top: "detection_out"
-  include {
-    phase: TEST
-  }
   detection_output_param {
     num_classes: 7
     share_location: true
